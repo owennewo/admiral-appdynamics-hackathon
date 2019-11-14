@@ -13,4 +13,12 @@ public class DispencerResource {
     public String hello() {
         return "hello";
     }
+
+    @GET
+    @Path("/action")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Action getAction() {
+        return new Action("move", "cw", "25");
+    }
+
 }
