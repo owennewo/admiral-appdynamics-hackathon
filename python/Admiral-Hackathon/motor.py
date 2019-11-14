@@ -30,7 +30,7 @@ def move(direction, speed):
     #direction = 'Backa' # moves anti-clockwise
     #speed = 4 # 1 is 100% speed with accuracy, reason for 4 is then per 8th of a 360 turn is 1second
 # 0.005 is 100% with accuracy
-    if direction == 'Back':
+    if direction == 'ccw':
         GPIO.output(rdir, GPIO.HIGH)
     else: GPIO.output(rdir, GPIO.LOW)
     interval = (0.005*speed)
@@ -46,9 +46,7 @@ def move(direction, speed):
 
 GPIO.output(rsleep, GPIO.HIGH)
 i = 0     
-while i < 4:
+while i < 1:
     move('Back', 4)
-    time.sleep(0.5)
-    move('Backa', 4)
     i += 1
 GPIO.output(rsleep, GPIO.LOW)
