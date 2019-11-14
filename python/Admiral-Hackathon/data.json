@@ -1,0 +1,4 @@
+{ “drug_name”:”adrug”, “duration”:10, “side effects“:’Agile Art’ }
+{ “drug_name”:”bdrug”, “duration”:20, “side effects“:’Agile bart’ }
+{ “drug_name”:”cdrug”, “duration”:30, “side effects“:’Agile crt’ }
+{ “drug_name”:”ddrug”, “duration”:40, “side effects“:’Agile dart’ }
