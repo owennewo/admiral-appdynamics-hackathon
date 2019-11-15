@@ -1,6 +1,6 @@
 {
     "/medio/*": {
-      "target": "http://localhost:8080",
+      "target": "http://3.8.162.130:8080",
       "secure": false
     }
   }

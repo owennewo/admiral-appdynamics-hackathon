@@ -7,34 +7,51 @@
         </mat-card-subtitle>
     </mat-card-header>
 
+    <div class="home-tab-content" *ngIf="homeTab">
 
-    <div *ngIf="homeTab">
-        <circle-progress [percent]="100 - (prescription.nextPrescriptionSeconds / prescription.intervalSeconds * 100)" [radius]="100" [outerStrokeWidth]="16" [innerStrokeWidth]="8"
-            [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [renderOnClick]="false"
-            [title]=" + prescription.nextPrescriptionSeconds + ' s'" [titleFontSize]="50"
-            [subtitle]="'time to next dose'" [titleColor]="'white'"
-            >
+        <div *ngIf="!questionaireActive">
+            <circle-progress [animation]=false
+                [percent]="100 - (prescription.nextPrescriptionSeconds / prescription.intervalSeconds * 100)"
+                [radius]="100" [outerStrokeWidth]="16" [innerStrokeWidth]="8" [outerStrokeColor]="getRingColour()"
+                [innerStrokeColor]="'#C7E596'" [renderOnClick]="false"
+                [title]=" + prescription.nextPrescriptionSeconds + ' s'" [titleFontSize]="50"
+                [subtitle]="'time to next dose'" [titleColor]="'white'">
+            </circle-progress>
 
-        </circle-progress>
+            <button class="dispense-button" *ngIf="takeButtonVisible()" mat-button (click)=dispenseButtonClick($event)>
+                DISPENSE</button>
+        </div>
+        <div style="margin-bottom: 5%; margin-top: 5%;" *ngIf="questionaireActive">
+            How are you feeling?
+
+            <button mat-button (click)=questionaireHappyResult($event)> <img src="assets/happy_face.png" height="150px;"></button>
+            <button mat-button (click)=questionaireBadResult($event)> <img src="assets/sick_face.png" height="150px;"> </button>
+        </div>
     </div>
+    
+
 
     <div *ngIf="prescriptionTab">
         <p> Course Duration: {{this.prescription.courseDurationDays}} days</p>
-
+        <p style="margin-bottom: 30%;"></p>
     </div>
 
+
     <div *ngIf="infoTab">
-        <p> Info and things!</p>
+        <p style="margin-bottom: 30%;"> Info and things!</p>
     </div>
 
     <div *ngIf="contactGPTab">
         <h3> If you are experiencing any side effects please contact your GP </h3>
         <p> Name: {{this.prescription.doctorName}} </p>
-        <p> Contact: {{this.prescription.doctorNumber}} </p>
+        <p style="margin-bottom: 15%;"> Contact: {{this.prescription.doctorNumber}} </p>
     </div>
 
+
+
     <div *ngIf="aboutTab">
-        <div mat-card-avatar style="margin-left: 10%; margin-top: 10%;"> <img src="assets/meddotioWhite.png" height="50%"></div>
+        <div mat-card-avatar style="margin-left: 10%; margin-top: 10%;"> <img src="assets/meddotioWhite.png"
+                height="50%"></div>
         <div mat-card-avatar style="margin-left: 10%;"><img src="assets/DispensRWhite.png" height="200%%"></div>
         <p style="margin: 10%;"> Version: 0.000001 </p>
     </div>
