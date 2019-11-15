@@ -49,11 +49,8 @@ export class PrescriptionService {
     });
   }
 
-  loadPrescription(id: string = "1") {
-    this.http.put(`/medio/prescription/${id}/load`,{}).subscribe((prescription:Prescription)=>{
-      // this can be null!
-      this.currentPrescription.next(prescription);
-    });
+  loadPrescription(id: string = "1"): Observable<any> {
+    return this.http.put(`/medio/prescription/${id}/load`,{});
   }
 
   getPrescription(id: string = "1"): Observable<Prescription>{

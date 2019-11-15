@@ -1,8 +1,10 @@
 package com.admiral.hackathon;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -10,6 +12,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.admiral.hackathon.model.Action;
+import com.admiral.hackathon.model.Event;
 import com.admiral.hackathon.model.Prescription;
 
 @Path("/medio")
@@ -30,6 +33,8 @@ public class DispencerResource {
         new Action("noop", "", ""),
     };
 
+    private ArrayList<Event> events = new ArrayList<>();
+
     private Prescription currentPrescription;
     private long nextPrescriptionTime;
     
@@ -46,8 +51,10 @@ public class DispencerResource {
 
         if (take) {
             take = false;
+            System.out.println("action take!");
             return new Action("move", "cw", "28"); 
         } else {
+            System.out.println("action noop!");
             return new Action("noop", "", "");
         }
 
@@ -58,6 +65,22 @@ public class DispencerResource {
         // Action nextAction = actions[actionIndex];
         
         // return nextAction;
+    }
+
+    @POST
+    @Path("/action")
+    @Produces(MediaType.APPLICATION_JSON)
+    public void postEvent(Event event) {
+        System.out.println("Event has arised: " + event);
+        events.add(event);
+    }
+
+    @GET
+    @Path("/event")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Event[] getEvents() {
+        // System.out.println("Event has arised: " + event);
+        return events.toArray(new Event[events.size()]);
     }
 
     @PUT
@@ -109,7 +132,6 @@ public class DispencerResource {
         }
 
         long interval = (nextPrescriptionTime - Calendar.getInstance().getTimeInMillis())/1000;
-
         currentPrescription.setNextPrescriptionSeconds((int) interval);
 
         return currentPrescription;
@@ -119,6 +141,8 @@ public class DispencerResource {
     @Path("/prescription/current/take")
     @Produces(MediaType.APPLICATION_JSON)
     public Prescription takeMedicine() {
+
+        System.out.println("taken!");
 
         take = true;
 

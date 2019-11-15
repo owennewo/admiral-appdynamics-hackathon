@@ -1,0 +1,27 @@
+<mat-card class="example-card" style="text-align: center;">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"><img src="assets/RWhite.png" height="100%"></div>
+            <mat-card-title>Med.io</mat-card-title>
+            <mat-card-subtitle>
+                DispenseR
+            </mat-card-subtitle>
+        </mat-card-header>
+    
+        <div *ngIf="prescription" >
+            <table>
+                <tr><td>Patient: </td><td>{{prescription.patientName}}</td></tr>
+                <tr><td>Course duration:: </td><td>{{prescription.courseDurationDays}}</td></tr>
+                <tr><td>instructions: </td><td>{{prescription.instructions}}</td></tr>
+                <tr><td>medication: </td><td>{{prescription.medication}}</td></tr>
+                <tr><td>sideEffects: </td><td>{{prescription.sideEffects}}</td></tr>
+            </table>
+                    
+        </div>
+    
+        <mat-card-footer>
+            <mat-card-actions align="center" style="font-size: 50;">
+                <button mat-raised-button color="primary" (click)=load()>LOAD</button>
+                
+            </mat-card-actions>
+        </mat-card-footer>
+    </mat-card>
