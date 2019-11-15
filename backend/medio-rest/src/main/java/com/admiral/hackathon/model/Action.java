@@ -1,4 +1,4 @@
-package com.admiral.hackathon;
+package com.admiral.hackathon.model;
 
 public class Action {
     private String action;
