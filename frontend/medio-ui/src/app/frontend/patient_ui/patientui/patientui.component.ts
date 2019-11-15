@@ -104,9 +104,9 @@ export class PatientuiComponent implements OnInit, OnDestroy {
     this.prescriptionService.takePrescription();
 
     if (this.prescription.quantityRemaining >= 1) {
-      if (this.prescription.quantityRemaining <= (this.prescription.quantityTotal / 2)) {
+      // if (this.prescription.quantityRemaining <= (this.prescription.quantityTotal / 2)) {
         this.questionaireActive = true;
-      }
+      // }
     }
   }
 

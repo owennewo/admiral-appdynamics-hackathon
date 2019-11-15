@@ -30,10 +30,10 @@ public class Prescription {
         p.sideEffects = new String[] { "Contains laxatives, stay within 50 yards of restroom", "May cause minty breath", "Family and friends will thank you" };
         p.conditions = new String[] { "halitosis","sugar addictions"};
         p.intervalSeconds = 10;
-        p.nextPrescriptionSeconds = 5;
-        p.quantityTotal = 3;
-        p.quantityRemaining = 3;
-        p.perDay = 4;
+        p.nextPrescriptionSeconds = 10;
+        p.quantityTotal = 7;
+        p.quantityRemaining = 7;
+        p.perDay = 5;
         p.courseDurationDays = 90;
         p.doctorName = "Dr. Theodor Seuss Geisel";
         p.doctorNumber = "07988 638 427";
@@ -51,9 +51,9 @@ public class Prescription {
         p.sideEffects = new String[] { "Drowsiness", "Mild nausea", "Light headedness" };
         p.conditions = new String[] { "Arrhythmia","Myalgia"};
         p.intervalSeconds = 20;
-        p.nextPrescriptionSeconds = 5;
-        p.quantityTotal = 14;
-        p.quantityRemaining = 3;
+        p.nextPrescriptionSeconds = 10;
+        p.quantityTotal = 7;
+        p.quantityRemaining = 7;
         p.perDay = 3;
         p.courseDurationDays = 14;
         p.doctorName = "Dr. Strangelove";
