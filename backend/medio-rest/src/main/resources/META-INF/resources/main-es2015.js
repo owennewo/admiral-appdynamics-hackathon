@@ -32,7 +32,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n\n<app-patientui></app-patientui>");
+/* harmony default export */ __webpack_exports__["default"] = ("\n<router-outlet></router-outlet>\n<!-- <app-patientui></app-patientui> -->");
 
 /***/ }),
 
@@ -45,7 +45,20 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<mat-card class=\"example-card\" style=\"text-align: center;\">\n    <mat-card-header>\n        <div mat-card-avatar class=\"example-header-image\"><img src=\"assets/RWhite.png\" height=\"100%\"></div>\n        <mat-card-title>Med.io</mat-card-title>\n        <mat-card-subtitle>\n            DispenseR\n        </mat-card-subtitle>\n    </mat-card-header>\n\n\n    <div *ngIf=\"homeTab\">\n        <circle-progress [percent]=\"100 - (prescription.nextPrescriptionSeconds / prescription.intervalSeconds * 100)\" [radius]=\"100\" [outerStrokeWidth]=\"16\" [innerStrokeWidth]=\"8\"\n            [outerStrokeColor]=\"'#78C000'\" [innerStrokeColor]=\"'#C7E596'\" [renderOnClick]=\"false\"\n            [title]=\" + prescription.nextPrescriptionSeconds + ' s'\" [titleFontSize]=\"50\"\n            [subtitle]=\"'time to next dose'\" [titleColor]=\"'white'\"\n            >\n\n        </circle-progress>\n    </div>\n\n    <div *ngIf=\"prescriptionTab\">\n        <p> Course Duration: {{this.prescription.courseDurationDays}} days</p>\n\n    </div>\n\n    <div *ngIf=\"infoTab\">\n        <p> Info and things!</p>\n    </div>\n\n    <div *ngIf=\"contactGPTab\">\n        <h3> If you are experiencing any side effects please contact your GP </h3>\n        <p> Name: {{this.prescription.doctorName}} </p>\n        <p> Contact: {{this.prescription.doctorNumber}} </p>\n    </div>\n\n    <div *ngIf=\"aboutTab\">\n        <div mat-card-avatar style=\"margin-left: 10%; margin-top: 10%;\"> <img src=\"assets/meddotioWhite.png\" height=\"50%\"></div>\n        <div mat-card-avatar style=\"margin-left: 10%;\"><img src=\"assets/DispensRWhite.png\" height=\"200%%\"></div>\n        <p style=\"margin: 10%;\"> Version: 0.000001 </p>\n    </div>\n\n    <mat-card-footer>\n        <mat-card-actions align=\"center\" style=\"font-size: 50;\">\n            <button mat-button (click)=homeButtonClick($event)>HOME</button>\n            <button mat-button (click)=prescriptionButtonClick($event)>PRESCRIPTION</button>\n            <button mat-button (click)=infoButtonClick($event)>MORE INFO</button>\n            <button mat-button (click)=contactButtonClick($event)>CONTACT GP</button>\n            <button mat-button (click)=aboutButtonClick($event)>ABOUT</button>\n        </mat-card-actions>\n    </mat-card-footer>\n</mat-card>");
+/* harmony default export */ __webpack_exports__["default"] = ("<mat-card class=\"example-card\" style=\"text-align: center;\">\n    <mat-card-header>\n        <div mat-card-avatar class=\"example-header-image\"><img src=\"assets/RWhite.png\" height=\"100%\"></div>\n        <mat-card-title>Med.io</mat-card-title>\n        <mat-card-subtitle>\n            DispenseR\n        </mat-card-subtitle>\n    </mat-card-header>\n\n    <div class=\"home-tab-content\" *ngIf=\"homeTab\">\n\n        <div *ngIf=\"!questionaireActive\">\n            <circle-progress [animation]=false\n                [percent]=\"100 - (prescription.nextPrescriptionSeconds / prescription.intervalSeconds * 100)\"\n                [radius]=\"100\" [outerStrokeWidth]=\"16\" [innerStrokeWidth]=\"8\" [outerStrokeColor]=\"getRingColour()\"\n                [innerStrokeColor]=\"'#C7E596'\" [renderOnClick]=\"false\"\n                [title]=\" + prescription.nextPrescriptionSeconds + ' s'\" [titleFontSize]=\"50\"\n                [subtitle]=\"'time to next dose'\" [titleColor]=\"'white'\">\n            </circle-progress>\n\n            <button class=\"dispense-button\" *ngIf=\"takeButtonVisible()\" mat-button (click)=dispenseButtonClick($event)>\n                DISPENSE</button>\n        </div>\n        <div style=\"margin-bottom: 5%; margin-top: 5%;\" *ngIf=\"questionaireActive\">\n            How are you feeling?\n\n            <button mat-button (click)=questionaireHappyResult($event)> <img src=\"assets/happy_face.png\" height=\"150px;\"></button>\n            <button mat-button (click)=questionaireBadResult($event)> <img src=\"assets/sick_face.png\" height=\"150px;\"> </button>\n        </div>\n    </div>\n    \n     \n    <div *ngIf=\"prescriptionTab\">\n        <p> Course Duration: {{this.prescription.courseDurationDays}} days</p>\n        <p style=\"margin-bottom: 30%;\"></p>\n    </div>\n\n\n    <div *ngIf=\"infoTab\">\n        <p style=\"margin-bottom: 30%;\"> Info and things!</p>\n    </div>ß\n\n    <div *ngIf=\"contactGPTab\">\n        <h3> If you are experiencing any side effects please contact your GP </h3>\n        <p> Name: {{this.prescription.doctorName}} </p>\n        <p style=\"margin-bottom: 15%;\"> Contact: {{this.prescription.doctorNumber}} </p>\n    </div>\n\n\n\n    <div *ngIf=\"aboutTab\">\n        <div mat-card-avatar style=\"margin-left: 10%; margin-top: 10%;\"> <img src=\"assets/meddotioWhite.png\"\n                height=\"50%\"></div>\n        <div mat-card-avatar style=\"margin-left: 10%;\"><img src=\"assets/DispensRWhite.png\" height=\"200%%\"></div>\n        <p style=\"margin: 10%;\"> Version: 0.000001 </p>\n    </div>\n\n    <mat-card-footer>\n        <mat-card-actions align=\"center\" style=\"font-size: 50;\">\n            <button mat-button (click)=homeButtonClick($event)>HOME</button>\n            <button mat-button (click)=prescriptionButtonClick($event)>PRESCRIPTION</button>\n            <button mat-button (click)=infoButtonClick($event)>MORE INFO</button>\n            <button mat-button (click)=contactButtonClick($event)>CONTACT GP</button>\n            <button mat-button (click)=aboutButtonClick($event)>ABOUT</button>\n        </mat-card-actions>\n    </mat-card-footer>\n</mat-card>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/pod/pod.component.html":
+/*!******************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pod/pod.component.html ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<mat-card class=\"example-card\" style=\"text-align: center;\">\n        <mat-card-header>\n            <div mat-card-avatar class=\"example-header-image\"><img src=\"assets/RWhite.png\" height=\"100%\"></div>\n            <mat-card-title>Med.io</mat-card-title>\n            <mat-card-subtitle>\n                DispenseR\n            </mat-card-subtitle>\n        </mat-card-header>\n    \n        <div *ngIf=\"prescription\" >\n            <table>\n                <tr><td>Patient: </td><td>{{prescription.patientName}}</td></tr>\n                <tr><td>Course duration:: </td><td>{{prescription.courseDurationDays}}</td></tr>\n                <tr><td>instructions: </td><td>{{prescription.instructions}}</td></tr>\n                <tr><td>medication: </td><td>{{prescription.medication}}</td></tr>\n                <tr><td>sideEffects: </td><td>{{prescription.sideEffects}}</td></tr>\n            </table>\n                    \n        </div>\n    \n        <mat-card-footer>\n            <mat-card-actions align=\"center\" style=\"font-size: 50;\">\n                <button mat-raised-button color=\"primary\" (click)=load()>LOAD</button>\n                \n            </mat-card-actions>\n        </mat-card-footer>\n    </mat-card>\n");
 
 /***/ }),
 
@@ -291,10 +304,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _frontend_patient_ui_patientui_patientui_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./frontend/patient_ui/patientui/patientui.component */ "./src/app/frontend/patient_ui/patientui/patientui.component.ts");
+/* harmony import */ var _pod_pod_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pod/pod.component */ "./src/app/pod/pod.component.ts");
 
 
 
-const routes = [];
+
+
+const routes = [
+    {
+        path: '', component: _frontend_patient_ui_patientui_patientui_component__WEBPACK_IMPORTED_MODULE_3__["PatientuiComponent"],
+    },
+    {
+        path: 'pod', component: _pod_pod_component__WEBPACK_IMPORTED_MODULE_4__["PodComponent"],
+    }
+];
 let AppRoutingModule = class AppRoutingModule {
 };
 AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -370,6 +394,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm2015/animations.js");
 /* harmony import */ var _frontend_patient_ui_patientui_patientui_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./frontend/patient_ui/patientui/patientui.module */ "./src/app/frontend/patient_ui/patientui/patientui.module.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _pod_pod_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pod/pod.component */ "./src/app/pod/pod.component.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
+
+
 
 
 
@@ -384,13 +412,16 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
         declarations: [
             _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
+            _pod_pod_component__WEBPACK_IMPORTED_MODULE_8__["PodComponent"],
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
             _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"],
             _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__["BrowserAnimationsModule"],
             _frontend_patient_ui_patientui_patientui_module__WEBPACK_IMPORTED_MODULE_6__["PatientuiModule"],
-            _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HttpClientModule"]
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HttpClientModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_9__["MatCardModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_9__["MatButtonModule"]
         ],
         providers: [],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
@@ -410,7 +441,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\nmat-card {\n    margin: 50px;\n    border-radius: 25px;\n    min-height: 50%\n}\n\nmat-card-header {\n    padding-left: 3%;\n}\n\nmat-card-content {\n    display: flex;\n    justify-items: center;\n    align-items: center;\n}\n\nmat-button {\n    background-color: white;\n}\n\ncircle-wrapper {\n    display: flex;\n    margin: 0 Auto;\n\n}\n\ntspan {\n    font-size: 80 !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZnJvbnRlbmQvcGF0aWVudF91aS9wYXRpZW50dWkvcGF0aWVudHVpLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUNBO0lBQ0ksWUFBWTtJQUNaLG1CQUFtQjtJQUNuQjtBQUNKOztBQUVBO0lBQ0ksZ0JBQWdCO0FBQ3BCOztBQUNBO0lBQ0ksYUFBYTtJQUNiLHFCQUFxQjtJQUNyQixtQkFBbUI7QUFDdkI7O0FBRUE7SUFDSSx1QkFBdUI7QUFDM0I7O0FBRUE7SUFDSSxhQUFhO0lBQ2IsY0FBYzs7QUFFbEI7O0FBRUE7SUFDSSx3QkFBd0I7QUFDNUIiLCJmaWxlIjoic3JjL2FwcC9mcm9udGVuZC9wYXRpZW50X3VpL3BhdGllbnR1aS9wYXRpZW50dWkuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxubWF0LWNhcmQge1xuICAgIG1hcmdpbjogNTBweDtcbiAgICBib3JkZXItcmFkaXVzOiAyNXB4O1xuICAgIG1pbi1oZWlnaHQ6IDUwJVxufVxuXG5tYXQtY2FyZC1oZWFkZXIge1xuICAgIHBhZGRpbmctbGVmdDogMyU7XG59XG5tYXQtY2FyZC1jb250ZW50IHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGp1c3RpZnktaXRlbXM6IGNlbnRlcjtcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xufVxuXG5tYXQtYnV0dG9uIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbn1cblxuY2lyY2xlLXdyYXBwZXIge1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgbWFyZ2luOiAwIEF1dG87XG5cbn1cblxudHNwYW4ge1xuICAgIGZvbnQtc2l6ZTogODAgIWltcG9ydGFudDtcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("\nmat-card {\n    margin: 50px;\n    border-radius: 25px;\n    min-height: 50%;\n\n\n}\n\nmat-card-header {\n    padding-left: 3%;\n}\n\nmat-card-content {\n    display: flex;\n    justify-items: center;\n    align-items: center;\n}\n\n.dispense-button {\n\n   \n}\n\nhome-tab-content {\n    \n    display:inline-block;\n    justify-items: center;\n    align-items: center;\n\n}\n\nmat-button {\n    background-color: white;\n}\n\ncircle-wrapper {\n    display: flex;\n    margin: 0 Auto;\n\n}\n\ntspan {\n    font-size: 80 !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZnJvbnRlbmQvcGF0aWVudF91aS9wYXRpZW50dWkvcGF0aWVudHVpLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUNBO0lBQ0ksWUFBWTtJQUNaLG1CQUFtQjtJQUNuQixlQUFlOzs7QUFHbkI7O0FBRUE7SUFDSSxnQkFBZ0I7QUFDcEI7O0FBQ0E7SUFDSSxhQUFhO0lBQ2IscUJBQXFCO0lBQ3JCLG1CQUFtQjtBQUN2Qjs7QUFHQTs7O0FBR0E7O0FBRUE7O0lBRUksb0JBQW9CO0lBQ3BCLHFCQUFxQjtJQUNyQixtQkFBbUI7O0FBRXZCOztBQUVBO0lBQ0ksdUJBQXVCO0FBQzNCOztBQUVBO0lBQ0ksYUFBYTtJQUNiLGNBQWM7O0FBRWxCOztBQUVBO0lBQ0ksd0JBQXdCO0FBQzVCIiwiZmlsZSI6InNyYy9hcHAvZnJvbnRlbmQvcGF0aWVudF91aS9wYXRpZW50dWkvcGF0aWVudHVpLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbm1hdC1jYXJkIHtcbiAgICBtYXJnaW46IDUwcHg7XG4gICAgYm9yZGVyLXJhZGl1czogMjVweDtcbiAgICBtaW4taGVpZ2h0OiA1MCU7XG5cblxufVxuXG5tYXQtY2FyZC1oZWFkZXIge1xuICAgIHBhZGRpbmctbGVmdDogMyU7XG59XG5tYXQtY2FyZC1jb250ZW50IHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGp1c3RpZnktaXRlbXM6IGNlbnRlcjtcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xufVxuXG5cbi5kaXNwZW5zZS1idXR0b24ge1xuXG4gICBcbn1cblxuaG9tZS10YWItY29udGVudCB7XG4gICAgXG4gICAgZGlzcGxheTppbmxpbmUtYmxvY2s7XG4gICAganVzdGlmeS1pdGVtczogY2VudGVyO1xuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG5cbn1cblxubWF0LWJ1dHRvbiB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG59XG5cbmNpcmNsZS13cmFwcGVyIHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIG1hcmdpbjogMCBBdXRvO1xuXG59XG5cbnRzcGFuIHtcbiAgICBmb250LXNpemU6IDgwICFpbXBvcnRhbnQ7XG59Il19 */");
 
 /***/ }),
 
@@ -433,36 +464,81 @@ __webpack_require__.r(__webpack_exports__);
 let PatientuiComponent = class PatientuiComponent {
     constructor(prescriptionService) {
         this.prescriptionService = prescriptionService;
-        this.prescription = {
-            conditions: [],
-            courseDurationDays: 20,
-            doctorName: "Dr. Bob Smith",
-            doctorNumber: "01945 411411",
-            instructions: ["Take one twice a day", "Put tablet under tongue"],
-            intervalSeconds: 5,
-            medication: ["2x Polo, twice daily", "1x Smarties, 5 times daily"],
-            nextPrescriptionSeconds: 10,
-            perDay: 3,
-            quantityRemaining: 4,
-            quantityTotal: 7,
-            sideEffects: ["Contains Laxatives", "Bad side effect"],
-            patientEmail: "foo",
-            patientName: 'bar'
-        };
+        // prescription : Prescription =    { 
+        // conditions: [],
+        // courseDurationDays: 20,
+        // doctorName: "Dr. Bob Smith",
+        // doctorNumber: "01945 411411",
+        // instructions: ["Take one twice a day", "Put tablet under tongue"],
+        // intervalSeconds: 5,
+        // medication: ["2x Polo, twice daily", "1x Smarties, 5 times daily"],
+        // nextPrescriptionSeconds: 10,
+        // perDay: 3,
+        // quantityRemaining: 4,
+        // quantityTotal: 7,
+        // sideEffects: ["Contains Laxatives", "Bad side effect"],
+        // patientEmail:"foo",
+        // patientName: 'bar'
+        // }
         //Tabs
         this.homeTab = true;
         this.prescriptionTab = false;
         this.infoTab = false;
         this.contactGPTab = false;
         this.aboutTab = false;
+        // Questionaire
+        this.questionaireActive = false;
+        // Colors
+        this.goodColor = '#78C000';
+        this.errorColor = '#FF0000';
     }
     ngOnInit() {
         this.sub = this.prescriptionService.currentPrescription.subscribe((prescription) => {
-            //this.prescription = prescription;
+            this.prescription = prescription;
         });
+    }
+    getRingColour() {
+        if (this.prescription != null) {
+            if (this.prescription.nextPrescriptionSeconds < 0) {
+                return this.errorColor;
+            }
+            else {
+                return this.goodColor;
+            }
+        }
+        else {
+            return this.goodColor;
+        }
     }
     ngOnDestroy() {
         this.sub.unsubscribe();
+    }
+    questionaireHappyResult() {
+        this.questionaireActive = false;
+    }
+    questionaireBadResult() {
+        // Do something with google duo 
+    }
+    takeButtonVisible() {
+        if (this.prescription != null) {
+            if (this.prescription.nextPrescriptionSeconds < 0) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            return false;
+        }
+    }
+    dispenseButtonClick(event) {
+        this.prescriptionService.takePrescription();
+        if (this.prescription.quantityRemaining >= 1) {
+            if (this.prescription.quantityRemaining <= (this.prescription.quantityTotal / 2)) {
+                this.questionaireActive = true;
+            }
+        }
     }
     homeButtonClick(event) {
         this.homeTab = true;
@@ -570,6 +646,69 @@ PatientuiModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/pod/pod.component.css":
+/*!***************************************!*\
+  !*** ./src/app/pod/pod.component.css ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("td {\n    text-align: left;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcG9kL3BvZC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksZ0JBQWdCO0FBQ3BCIiwiZmlsZSI6InNyYy9hcHAvcG9kL3BvZC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsidGQge1xuICAgIHRleHQtYWxpZ246IGxlZnQ7XG59Il19 */");
+
+/***/ }),
+
+/***/ "./src/app/pod/pod.component.ts":
+/*!**************************************!*\
+  !*** ./src/app/pod/pod.component.ts ***!
+  \**************************************/
+/*! exports provided: PodComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PodComponent", function() { return PodComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _service_prescription_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../service/prescription.service */ "./src/app/service/prescription.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
+
+
+
+let PodComponent = class PodComponent {
+    constructor(prescriptionServive, router) {
+        this.prescriptionServive = prescriptionServive;
+        this.router = router;
+    }
+    ngOnInit() {
+        this.prescriptionServive.getPrescription().subscribe((prescription) => {
+            this.prescription = prescription;
+        });
+    }
+    load() {
+        this.prescriptionServive.loadPrescription("1").subscribe((prescription) => {
+            this.router.navigate(["/"]);
+        });
+    }
+};
+PodComponent.ctorParameters = () => [
+    { type: _service_prescription_service__WEBPACK_IMPORTED_MODULE_2__["PrescriptionService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
+];
+PodComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-pod',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./pod.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/pod/pod.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./pod.component.css */ "./src/app/pod/pod.component.css")).default]
+    })
+], PodComponent);
+
+
+
+/***/ }),
+
 /***/ "./src/app/service/prescription.service.ts":
 /*!*************************************************!*\
   !*** ./src/app/service/prescription.service.ts ***!
@@ -625,10 +764,7 @@ let PrescriptionService = class PrescriptionService {
         });
     }
     loadPrescription(id = "1") {
-        this.http.put(`/medio/prescription/${id}/load`, {}).subscribe((prescription) => {
-            // this can be null!
-            this.currentPrescription.next(prescription);
-        });
+        return this.http.put(`/medio/prescription/${id}/load`, {});
     }
     getPrescription(id = "1") {
         return this.http.get(`/medio/prescription/${id}`, {}).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(pre => pre));
