@@ -2,9 +2,12 @@
 mat-card {
     margin: 50px;
     border-radius: 25px;
-    
+    min-height: 50%
 }
 
+mat-card-header {
+    padding-left: 3%;
+}
 mat-card-content {
     display: flex;
     justify-items: center;
@@ -20,3 +23,4 @@ circle-wrapper {
     margin: 0 Auto;
 
 }
+
