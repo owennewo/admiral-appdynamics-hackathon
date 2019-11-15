@@ -1,0 +1,22 @@
+
+mat-card {
+    margin: 50px;
+    border-radius: 25px;
+    
+}
+
+mat-card-content {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+mat-button {
+    background-color: white;
+}
+
+circle-wrapper {
+    display: flex;
+    margin: 0 Auto;
+
+}
