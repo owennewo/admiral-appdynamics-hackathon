@@ -19,6 +19,9 @@ public class Prescription {
 
     private String doctorName;
     private String doctorNumber;
+    private String patientName;
+    private String patientEmail;
+    
     
     private static Prescription create1() {
         Prescription p = new Prescription();
@@ -34,6 +37,8 @@ public class Prescription {
         p.courseDurationDays = 90;
         p.doctorName = "Dr. Theodor Seuss Geisel";
         p.doctorNumber = "07988 638 427";
+        p.patientName = "Nanny McPhee";
+        
     
         return p;
     
@@ -53,6 +58,9 @@ public class Prescription {
         p.courseDurationDays = 14;
         p.doctorName = "Dr. Strangelove";
         p.doctorNumber = "07988 222 2343";
+        p.patientName = "Peter Parker";
+        p.patientEmail = "spidey@marvel.com";
+
 
         return p;
     }
@@ -162,6 +170,23 @@ public class Prescription {
     }
 
     
+    public String getPatientName() {
+        return patientName;
+    }
+
+    public void setPatientName(String patientName) {
+        this.patientName = patientName;
+    }
+
+    public String getPatientEmail() {
+        return patientEmail;
+    }
+
+    public void setPatientEmail(String patientEmail) {
+        this.patientEmail = patientEmail;
+    }
+    
+    
     public Prescription clone() {
 
         Prescription p = new Prescription();
@@ -177,8 +202,11 @@ public class Prescription {
         p.courseDurationDays = this.courseDurationDays;
         p.doctorName = this.doctorName;
         p.doctorNumber = this.doctorNumber;
+        p.patientEmail = this.patientEmail;
+        p.patientName = this.patientName;
 
         return p;
     }
-    
+
+
 }

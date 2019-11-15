@@ -10,23 +10,25 @@ import { Observable, Subscriber, Subscription } from 'rxjs';
 })
 export class PatientuiComponent implements OnInit, OnDestroy {
 
-  prescription: Prescription;
+//  prescription: Prescription;
   sub: Subscription;
-  // prescription : Prescription =    { 
-  // conditions: [],
-  // courseDurationDays: 20,
-  // doctorName: "Dr. Bob Smith",
-  // doctorNumber: "01945 411411",
-  // instructions: ["Take one twice a day", "Put tablet under tongue"],
-  // intervalSeconds: 5,
-  // medication: ["2x Polo, twice daily", "1x Smarties, 5 times daily"],
+  prescription : Prescription =    { 
+  conditions: [],
+  courseDurationDays: 20,
+  doctorName: "Dr. Bob Smith",
+  doctorNumber: "01945 411411",
+  instructions: ["Take one twice a day", "Put tablet under tongue"],
+  intervalSeconds: 5,
+  medication: ["2x Polo, twice daily", "1x Smarties, 5 times daily"],
   
-  // nextPrescriptionSeconds: 10,
-  // perDay: 3,
-  // quantityRemaining: 4,
-  // quantityTotal: 7,
-  // sideEffects: ["Contains Laxatives", "Bad side effect"]
-  // }
+  nextPrescriptionSeconds: 10,
+  perDay: 3,
+  quantityRemaining: 4,
+  quantityTotal: 7,
+  sideEffects: ["Contains Laxatives", "Bad side effect"],
+  patientEmail:"foo",
+  patientName: 'bar'
+  }
   
   //Tabs
   homeTab: boolean = true;
@@ -41,7 +43,7 @@ export class PatientuiComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     this.sub = this.prescriptionService.currentPrescription.subscribe((prescription)=>{
-      this.prescription = prescription;
+      //this.prescription = prescription;
     });
     
   }

@@ -11,4 +11,6 @@ export interface Prescription {
     quantityRemaining: number;
     quantityTotal: number;
     sideEffects: string[];
+    patientName: string;
+    patientEmail: string;
 }

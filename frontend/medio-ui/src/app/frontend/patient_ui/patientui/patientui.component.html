@@ -4,15 +4,17 @@
         <mat-card-title>Med.io</mat-card-title>
         <mat-card-subtitle>
             DispenseR
-            <p *ngIf="prescription">{{prescription?.doctorName}}</p>
         </mat-card-subtitle>
     </mat-card-header>
 
 
     <div *ngIf="homeTab">
-        <circle-progress [percent]="50" [radius]="100" [outerStrokeWidth]="16" [innerStrokeWidth]="8"
+        <circle-progress [percent]="100 - (prescription.nextPrescriptionSeconds / prescription.intervalSeconds * 100)" [radius]="100" [outerStrokeWidth]="16" [innerStrokeWidth]="8"
             [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [renderOnClick]="false"
-            [subtitle]="'Time until next dose'">
+            [title]=" + prescription.nextPrescriptionSeconds + ' s'" [titleFontSize]="50"
+            [subtitle]="'time to next dose'" [titleColor]="'white'"
+            >
+
         </circle-progress>
     </div>
 
