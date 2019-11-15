@@ -79,6 +79,14 @@ export class PatientuiComponent implements OnInit, OnDestroy {
   }
 
 
+  doseToDispense() {
+    if (this.prescription != null){
+      return ( this.prescription.quantityRemaining > 0);
+    } else {
+      return false;
+    }
+  }
+
   takeButtonVisible() {
     if (this.prescription != null) {
       if (this.prescription.nextPrescriptionSeconds < 0) {

@@ -8,24 +8,28 @@
     </mat-card-header>
 
     <div class="home-tab-content" *ngIf="homeTab">
+        <div *ngIf="doseToDispense()">
+            <div *ngIf="!questionaireActive">
+                <circle-progress [animation]=false
+                    [percent]="100 - (prescription.nextPrescriptionSeconds / prescription.intervalSeconds * 100)"
+                    [radius]="100" [outerStrokeWidth]="16" [innerStrokeWidth]="8" [outerStrokeColor]="getRingColour()"
+                    [innerStrokeColor]="'#C7E596'" [renderOnClick]="false"
+                    [title]=" + prescription.nextPrescriptionSeconds + ' s'" [titleFontSize]="50"
+                    [subtitle]="'time to next dose'" [titleColor]="'white'">
+                </circle-progress>
 
-        <div *ngIf="!questionaireActive">
-            <circle-progress [animation]=false
-                [percent]="100 - (prescription.nextPrescriptionSeconds / prescription.intervalSeconds * 100)"
-                [radius]="100" [outerStrokeWidth]="16" [innerStrokeWidth]="8" [outerStrokeColor]="getRingColour()"
-                [innerStrokeColor]="'#C7E596'" [renderOnClick]="false"
-                [title]=" + prescription.nextPrescriptionSeconds + ' s'" [titleFontSize]="50"
-                [subtitle]="'time to next dose'" [titleColor]="'white'">
-            </circle-progress>
+                <button class="dispense-button" *ngIf="takeButtonVisible()" mat-button (click)=dispenseButtonClick($event)>
+                    DISPENSE</button>
+            </div>
+            <div style="margin-bottom: 5%; margin-top: 5%;" *ngIf="questionaireActive">
+                How are you feeling?
 
-            <button class="dispense-button" *ngIf="takeButtonVisible()" mat-button (click)=dispenseButtonClick($event)>
-                DISPENSE</button>
+                <button mat-button (click)=questionaireHappyResult($event)> <img src="assets/happy_face.png" height="150px;"></button>
+                <button mat-button (click)=questionaireBadResult($event)> <img src="assets/sick_face.png" height="150px;"> </button>
+            </div>
         </div>
-        <div style="margin-bottom: 5%; margin-top: 5%;" *ngIf="questionaireActive">
-            How are you feeling?
-
-            <button mat-button (click)=questionaireHappyResult($event)> <img src="assets/happy_face.png" height="150px;"></button>
-            <button mat-button (click)=questionaireBadResult($event)> <img src="assets/sick_face.png" height="150px;"> </button>
+        <div style="margin-bottom: 10%; margin-top: 10%" *ngIf="!doseToDispense()">
+            Nothing has been loaded into the device!
         </div>
     </div>
     
@@ -38,14 +42,13 @@
 
     <div *ngIf="infoTab">
         <p style="margin-bottom: 30%;"> Info and things!</p>
-    </div>ß
+    </div>
 
     <div *ngIf="contactGPTab">
         <h3> If you are experiencing any side effects please contact your GP </h3>
         <p> Name: {{this.prescription.doctorName}} </p>
         <p style="margin-bottom: 15%;"> Contact: {{this.prescription.doctorNumber}} </p>
     </div>
-
 
 
     <div *ngIf="aboutTab">
