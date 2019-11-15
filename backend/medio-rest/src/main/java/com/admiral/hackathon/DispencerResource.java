@@ -16,6 +16,7 @@ import com.admiral.hackathon.model.Prescription;
 public class DispencerResource {
 
     private int actionIndex = 0;
+    private boolean take = false;
 
     private Action[] actions = {
         new Action("noop", "", ""),
@@ -43,13 +44,20 @@ public class DispencerResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Action getAction() {
 
-        actionIndex++;
-        if (actionIndex >= actions.length) {
-            actionIndex = 0;
+        if (take) {
+            take = false;
+            return new Action("move", "cw", "28"); 
+        } else {
+            return new Action("noop", "", "");
         }
-        Action nextAction = actions[actionIndex];
+
+        // actionIndex++;
+        // if (actionIndex >= actions.length) {
+        //     actionIndex = 0;
+        // }
+        // Action nextAction = actions[actionIndex];
         
-        return nextAction;
+        // return nextAction;
     }
 
     @PUT
@@ -111,6 +119,8 @@ public class DispencerResource {
     @Path("/prescription/current/take")
     @Produces(MediaType.APPLICATION_JSON)
     public Prescription takeMedicine() {
+
+        take = true;
 
         if (currentPrescription == null) {
             return null;

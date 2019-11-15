@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "cp dist/medio-ui/* ../../backend/medio-rest/src/main/resources/META-INF/resources"
+    "deploy": "npm run build && cp -r dist/medio-ui/* ../../backend/medio-rest/src/main/resources/META-INF/resources"
   },
   "private": true,
   "dependencies": {
