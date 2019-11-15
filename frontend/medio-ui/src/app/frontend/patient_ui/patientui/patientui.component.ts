@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Prescription } from 'src/app/model/prescription';
 import { PrescriptionService } from 'src/app/service/prescription.service';
 import { Observable, Subscriber, Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-patientui',
@@ -44,7 +45,7 @@ export class PatientuiComponent implements OnInit, OnDestroy {
   goodColor = '#78C000';
   errorColor = '#FF0000';
 
-  constructor(private prescriptionService: PrescriptionService) { }
+  constructor(private prescriptionService: PrescriptionService, private router: Router) { }
 
   ngOnInit() {
 
@@ -149,6 +150,11 @@ export class PatientuiComponent implements OnInit, OnDestroy {
     this.infoTab = false;
     this.contactGPTab = false;
     this.aboutTab = true;
+  }
+
+  loadClick() {
+    this.router.navigate(['pod']);
+    this.prescriptionService.loadPrescription();
   }
 
 

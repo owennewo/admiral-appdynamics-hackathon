@@ -56,6 +56,7 @@
                 height="50%"></div>
         <div mat-card-avatar style="margin-left: 10%;"><img src="assets/DispensRWhite.png" height="200%%"></div>
         <p style="margin: 10%;"> Version: 0.000001 </p>
+        <button mat-button (click)=loadClick($event)>LOAD</button>
     </div>
 
     <mat-card-footer>
@@ -65,6 +66,7 @@
             <button mat-button (click)=infoButtonClick($event)>MORE INFO</button>
             <button mat-button (click)=contactButtonClick($event)>CONTACT GP</button>
             <button mat-button (click)=aboutButtonClick($event)>ABOUT</button>
+            
         </mat-card-actions>
     </mat-card-footer>
 </mat-card>
