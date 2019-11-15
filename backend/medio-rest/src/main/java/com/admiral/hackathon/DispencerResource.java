@@ -66,7 +66,25 @@ public class DispencerResource {
         return currentPrescription;
     }
 
+    @GET
+    @Path("/prescription/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Prescription getPrescription(@PathParam("id") String id ) {
+
+
+        if (id.equals("1")) {
+            return Prescription.PRESCRIPTION1.clone();
+        } else {
+            return Prescription.PRESCRIPTION2.clone();
+        }
+
+    }
+
     private void resetPrescriptionTime() {
+        
+        if (currentPrescription == null) {
+            return;    
+        }
         Calendar pillTime = Calendar.getInstance();
         pillTime.add(Calendar.SECOND, currentPrescription.getIntervalSeconds());
         nextPrescriptionTime = pillTime.getTimeInMillis();
@@ -105,6 +123,14 @@ public class DispencerResource {
         currentPrescription.setQuantityRemaining(currentPrescription.getQuantityRemaining() -1);
         currentPrescription.setNextPrescriptionSeconds(currentPrescription.getIntervalSeconds());
         return currentPrescription;
+    }
+
+    @PUT
+    @Path("/prescription/reset")
+    // @Produces(MediaType.APPLICATION_JSON)
+    public void resetPrescription() {
+        currentPrescription = null;
+        resetPrescriptionTime();
     }
 
 }

@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PatientuiModule } from './frontend/patient_ui/patientui/patientui.module';
+import { HttpClient } from 'selenium-webdriver/http';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -16,7 +18,8 @@ import { PatientuiModule } from './frontend/patient_ui/patientui/patientui.modul
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    PatientuiModule
+    PatientuiModule,
+    HttpClientModule
    
   ],
   providers: [],

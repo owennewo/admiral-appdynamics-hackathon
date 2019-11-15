@@ -2,7 +2,10 @@
     <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title>Med.io</mat-card-title>
-        <mat-card-subtitle>DispenseR</mat-card-subtitle>
+        <mat-card-subtitle>
+            DispenseR
+            <p *ngIf="prescription">{{prescription?.doctorName}}</p>
+        </mat-card-subtitle>
     </mat-card-header>
 
     <circle-progress [percent]="50" [radius]="100" [outerStrokeWidth]="16" [innerStrokeWidth]="8"
