@@ -1,6 +1,6 @@
 <mat-card class="example-card" style="text-align: center;">
     <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
+        <div mat-card-avatar class="example-header-image"><img src="assets/RWhite.png" height="100%"></div>
         <mat-card-title>Med.io</mat-card-title>
         <mat-card-subtitle>
             DispenseR
@@ -8,15 +8,42 @@
         </mat-card-subtitle>
     </mat-card-header>
 
-    <circle-progress [percent]="50" [radius]="100" [outerStrokeWidth]="16" [innerStrokeWidth]="8"
-        [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [renderOnClick]="false"
-        [subtitle]="'Time until next dose'">
-    </circle-progress>
 
-    <mat-card-actions align="center" style="font-size: 50;">
-        <button mat-button color="secondary">PROFILE</button>
-        <button mat-button>PRESCRIPTION</button>
-        <button mat-button>MORE INFO</button>
-        <button mat-button>CONTACT GP</button>
-    </mat-card-actions>
+    <div *ngIf="homeTab">
+        <circle-progress [percent]="50" [radius]="100" [outerStrokeWidth]="16" [innerStrokeWidth]="8"
+            [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [renderOnClick]="false"
+            [subtitle]="'Time until next dose'">
+        </circle-progress>
+    </div>
+
+    <div *ngIf="prescriptionTab">
+        <p> Course Duration: {{this.prescription.courseDurationDays}} days</p>
+
+    </div>
+
+    <div *ngIf="infoTab">
+        <p> Info and things!</p>
+    </div>
+
+    <div *ngIf="contactGPTab">
+        <h3> If you are experiencing any side effects please contact your GP </h3>
+        <p> Name: {{this.prescription.doctorName}} </p>
+        <p> Contact: {{this.prescription.doctorNumber}} </p>
+    </div>
+
+    <div *ngIf="aboutTab">
+        <div mat-card-avatar style="margin-left: 10%; margin-top: 10%;"> <img src="assets/meddotioWhite.png" height="50%"></div>
+        <div mat-card-avatar style="margin-left: 10%;"><img src="assets/DispensRWhite.png" height="200%%"></div>
+        <p style="margin: 10%;"> Version: 0.000001 </p>
+    </div>
+
+    <mat-card-footer>
+        <mat-card-actions align="center" style="font-size: 50;">
+            <button mat-button (click)=homeButtonClick($event)>HOME</button>
+            <button mat-button (click)=prescriptionButtonClick($event)>PRESCRIPTION</button>
+            <button mat-button (click)=infoButtonClick($event)>MORE INFO</button>
+            <button mat-button (click)=contactButtonClick($event)>CONTACT GP</button>
+            <button mat-button (click)=aboutButtonClick($event)>ABOUT</button>
+        </mat-card-actions>
+    </mat-card-footer>
 </mat-card>
